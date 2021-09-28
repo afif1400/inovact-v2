@@ -33,7 +33,20 @@ const watchScroll = () =>
 
 const NavBar = () => {
     const scrollDirection = useObservable(watchScroll, 'Up')
-
+    // const removeTheBorder = (target: any)=>{
+    //     console.log(target);
+    //     const childrenHidden = target.closest(".nav-component__items").querySelectorAll(".nav-component__icons--hidden");
+    //     const childrenNotHidden = target.closest(".nav-component__items").querySelectorAll(".nav-component__icons");
+    //     const children = [...childrenHidden, ...childrenNotHidden];
+    //     children.forEach((node:any)=>{
+    //         node.style.borderBottom = "none";
+    //     });
+    // }
+    // const addBorder = (e: any)=>{
+    //     removeTheBorder(e.target);
+    //     // e.target.style.padding= "10px";
+    //     e.target.style.borderBottom = "3px solid #02bd63";
+    // }
     return (
         <>
             {/* Top Bar*/}
@@ -122,29 +135,35 @@ const NavBar = () => {
                     }`}
                 >
                     <div className="bottom-nav-component__items">
-                    <Link to="/feed"> <img
-                            className="bottom-nav-component__items--active"
-                            src={home}
-                            alt="home"
-                        />
-                    </Link>
-                    <Link to="/connections"> <img
-                            className="bottom-nav-component__items__icons"
-                            src={connection}
-                            alt="connection"
-                        /> </Link>
-                       <Link to="/teams">   <img
-                            className="bottom-nav-component__items__icons"
-                            src={teams}
-                            alt="Team"
-                        />
+                        <Link to="/feed">    
+                            <img
+                                className="bottom-nav-component__items--active"
+                                src={home}
+                                alt="home"
+                            />
+                        </Link>
+
+                        <Link to="/connections">    
+                            <img
+                                className="bottom-nav-component__items__icons"
+                                src={connection}
+                                alt="connection"
+                            />
+                        </Link>
+                        <Link to="/teams">
+                            <img
+                                className="bottom-nav-component__items__icons"
+                                src={teams}
+                                alt="Team"
+                            />
                         </Link>
                         <Link to="/profile">
-                        <img
-                            className="bottom-nav-component__items__icons--user"
-                            src={user}
-                            alt="user"
-                        /></Link>
+                            <img
+                                className="bottom-nav-component__items__icons--user"
+                                src={user}
+                                alt="user"
+                            />
+                        </Link>
                     </div>
                 </div>
             </div>

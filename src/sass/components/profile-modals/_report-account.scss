@@ -4,7 +4,12 @@
   z-index: 105;
   border-radius: 10px;
   width: 40%;
-
+  @include respond(md){
+    width: 60%;
+  }
+  @include respond(md){
+    width: 80%;
+  }
     padding: 20px 40px;
     text-align: left;
     &-content{

@@ -29,8 +29,8 @@
             object-fit: cover;
         }
         @include respond(md){
-            height: 50px;
-            min-width: 50px;
+            height: 40px;
+            min-width: 40px;
         }
     }
     &-main-comment-container{
@@ -38,6 +38,7 @@
         flex-direction: column;
         line-height: 1.2;
     }
+
     &-user-name{
         font-size: large;
         font-weight: 600;
@@ -60,6 +61,7 @@
             align-items: center;
             column-gap: 10px;
             cursor: pointer;
+            font-size: 12px;
             &-separator{
                 width: 70%;
                 @include respond(md){
@@ -67,10 +69,31 @@
                 }
             }
             @include respond(md){
-                font-size: small;
+                font-size: 10px;
             }
         }
         
+    }
+    &-addcomment{
+        display: flex;
+        textarea{
+            font-size: small;
+            padding: 5px 20px;
+            resize: none;
+            width: 100%;
+            height: 30px;
+            border-radius: 20px;
+            border: none;
+            background-color: #f2f7ff;
+        }
+        button{
+            width: 4rem;
+            border-radius: 10px;
+            background-color: $color-secondary-blue;
+            border: none;
+            color: white;
+            margin: 0px 20px;
+        }
     }
 }
 
@@ -101,6 +124,25 @@
             display: none;
         }
     }
+    &-img-mini{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 5px 10px;
+        display: none;
+        img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+        @include respond(lg){
+            display: none;
+        }
+        @include respond(md){
+            display: block;
+        }
+    }
     &-content{
         display:flex;
         flex-direction: column;
@@ -108,8 +150,17 @@
     }
     &-name-container{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         padding: 5px 0px;
+        align-items: center;
+        // div{
+        //     display: flex;
+        //     flex-direction: column;
+        // }
+    }
+    &-name-time{
+        display: flex;
+        flex-direction: column;
     }
     &-name{
         font-size: small;

@@ -63,9 +63,12 @@
 }
 
 .team-members{
-    div{
+    &-add{
         display: flex;
         justify-content: space-between;
+        @include respond(xs){
+            flex-direction: column;
+        }
     }
     input, textarea{
         font-size: small;
@@ -85,6 +88,7 @@
         border-radius: 10px;
         background-color: $primary-background;
     }
+    
 }
 .adding-roles{
     input{

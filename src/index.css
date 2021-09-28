@@ -1,1 +1,31 @@
-@import url("/src//fonts/stylesheet.css");
+@import url('/src/fonts/stylesheet.css');
+
+/*
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from 'App'
+
+// CSS
+import './index.css'
+import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+
+// Redux
+import thunk from 'redux-thunk'
+import reducer from './redux/user/reducer'
+import { Provider } from 'react-redux'
+import { applyMiddleware, createStore, Store } from 'redux'
+
+// Store
+const store: Store<UserState, UserAction> & {
+    dispatch: DispatchType
+} = createStore(reducer, applyMiddleware(thunk))
+
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+)
+*/

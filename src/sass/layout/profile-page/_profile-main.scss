@@ -10,10 +10,14 @@
             margin: 2rem auto;
             width: 80%;
             column-gap: 50px;
-            @include respond(md){
-                width: 100%;
+            @include respond(lg){
                 column-gap: 10px;
+                width: 100%;
             }
+            // @include respond(md){
+            //     width: 100%;
+            //     column-gap: 10px;
+            // }
         }
         &-left{
             width: 30%;
@@ -28,9 +32,12 @@
             padding: 20px;
             max-width: 700px;
             width: 80%;
-            margin: 0px auto;
-            @include respond(sm){
+            @include respond(md){
+                margin: 0 auto;
                 width: 100%;
+            }
+            &-noposts{
+
             }
         }
         
@@ -93,9 +100,10 @@
         height: 4rem;
         background-color: $color-white;
         padding: 10px 0px; 
-        width: 45%;
+        width: 50%;
+        max-width: 800px;
         border-radius: 5px;
-        transform: translate(-10%,150%);
+        transform: translate(-13%,150%);
         box-shadow: 1px 4px 15px -8px rgba(0,0,0,0.75);
         &-options{
             position: relative;
@@ -109,12 +117,16 @@
                 z-index: 999;
                 // border: 1px solid gray;
                 box-shadow: -1px 4px 10px -6px rgba(0,0,0,0.75);
+                @include respond(md){
+                    transform: translate(-30%,-90%);
+                }
                 span{
                     padding: 5px;
                     width: 100%;
                     text-align: left;
                     cursor: pointer;
                 }
+
                 span:hover{
                     background-color: rgb(221, 219, 219);
                 }
@@ -186,4 +198,16 @@
         border-radius: 50%;
         margin: 0px 20px ;
     }
+}
+
+.user-not-posted-anything{
+    font-size: larger;
+    font-weight: 600;
+    height: 200px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
 }

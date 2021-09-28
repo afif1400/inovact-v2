@@ -3,7 +3,12 @@
   background-color: $color-white;
   border-radius: 10px;
   width: 40%;
-
+  @include respond(md){
+    width: 60%;
+  }
+  @include respond(sm){
+    width: 80%;
+  }
   z-index: 105;
     padding: 20px 40px;
     text-align: left;

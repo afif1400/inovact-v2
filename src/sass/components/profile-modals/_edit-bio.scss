@@ -8,6 +8,12 @@
         z-index: 999;
         width: 40%;
         border-radius: 10px;
+        @include respond(md){
+            width: 70%;
+        }
+        @include respond(sm){
+            width: 100%;
+        }
     }
     &-heading{
         display: flex;

@@ -10,6 +10,10 @@ function CommentsOnPost(props: any) {
                 <p className="comments-on-posts-heading">Comments</p>
                 <CommentMainContent/>
                 <CommentMainContent/>
+                <div className="comments-on-posts-addcomment">
+                    <textarea placeholder="Add a comment..."/>
+                    <button>Post</button>
+                </div>
             </div>
         </div>
     )

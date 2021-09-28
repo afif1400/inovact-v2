@@ -8,7 +8,7 @@ import TeamTag from '../LeftProfileContent/Components/TeamTag';
 import UserTag from './UserTag';
 import CommentsOnPost from './CommentsOnPost'
 
-function Post({ post, openTeamMember, openRequestJoin }: any) {
+function Post({ post, openTeamMember, viewEditProject }: any) {
     const [showShareOption, setShowShareOption] = useState(false);
     const teamsData = [
         {
@@ -212,7 +212,7 @@ function Post({ post, openTeamMember, openRequestJoin }: any) {
                                 {
                                     showPostOptions &&
                                     <div className="post__footer__team__options-all" onMouseLeave={removePostOptionsSLow}>
-                                        <span>Edit Post</span>
+                                        <span onClick={viewEditProject}>Edit Post</span>
                                         <span>Post Statistics</span>
                                         <span>Delete Post</span>
                                     </div>

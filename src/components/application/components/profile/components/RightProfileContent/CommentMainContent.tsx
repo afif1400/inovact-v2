@@ -64,11 +64,22 @@ function CommentMainContent(props: any) {
                                     <div className="comments-on-posts-all-replies">
                                         {
                                             showReplies &&
-                                            replyData.map((reply: any)=>{
-                                               return <CommentReplyTag img={reply.img} name={reply.name} time={reply.time} tag={reply.tag} comment={reply.comment}/>
-                                            })
+                                            <div>
+                                                {
+                                                    replyData.map((reply: any)=>{
+                                                        return <CommentReplyTag img={reply.img} name={reply.name} time={reply.time} tag={reply.tag} comment={reply.comment}/>
+                                                        })
+                                                }
+                                                
+                                                <div className="comments-on-posts-addcomment">
+                                                    <textarea placeholder="Reply to comment..."/>
+                                                    <button>Post</button>
+                                                </div>
+                                            </div>
+                                            
                                         }
                                     </div>
+                                    
                                 </div>
                             }
                         </div>

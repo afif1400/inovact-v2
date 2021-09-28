@@ -5,7 +5,6 @@ $accept-btn: #02BD63;
 .right-network-stats{
     padding: 2rem;
     background-color: $primary-background;
-    width: 33%;
     border-radius: 10px;
     @include respond(md){
         width: 100%;
@@ -37,8 +36,12 @@ $accept-btn: #02BD63;
         }
         p {
             display: flex;
+            row-gap: 10px;
             flex-direction: row;
             justify-content: space-between;
+            span{
+                padding: 0px 10px;
+            }
             @include respond(sm){
                 line-height: 0.8;
             }
@@ -89,10 +92,17 @@ $accept-btn: #02BD63;
     &-img{
         border-radius: 50%;
         overflow: hidden;
+        margin: 0px 5px;
         img{
             width: 60px;
             height: 60px;
             object-fit: cover;
+            @include respond(sm){
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+                
+            }
         }
     }
     &-data{
@@ -124,7 +134,7 @@ $accept-btn: #02BD63;
             margin: 20px;
             border: none;
         }
-        @include respond(xxs){
+        @include respond(xs){
             flex-direction: column;
             justify-content: space-evenly;
             button{
@@ -137,6 +147,7 @@ $accept-btn: #02BD63;
     }
     @include respond(sm){
         margin: 0;
+        justify-content: space-around;
     }
 }
 
@@ -155,6 +166,10 @@ $accept-btn: #02BD63;
             height: 60px;
             object-fit: cover;
             margin: 15px;
+            @include respond(sm){
+                width: 50px;
+                height: 50px;
+            }
         }
     }
     &-data{
@@ -185,6 +200,13 @@ $accept-btn: #02BD63;
             margin: 20px;
             border: none;
         }
+        @include respond(xs){
+            flex-direction: column;
+            justify-content: space-evenly;
+            button{
+                height: 1.5rem;
+            }
+        }
     }
     &-msg-btn{
         background-color: $primary-background;
@@ -192,6 +214,7 @@ $accept-btn: #02BD63;
     }
     @include respond(sm){
         margin: 0;
+        justify-content: space-around;
     }
 }
 

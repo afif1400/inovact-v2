@@ -11,6 +11,9 @@ import ReportAccount from './components/ReportAccount';
 import ViewTeamMembers from '../feed/components/modals/ViewTeamMembers/ViewTeamMembers';
 import CreateTeam from '../feed/components/modals/CreateTeam/CreateTeam';
 import EditBio from './components/modals/EditBio';
+import EditProject from './components/modals/EditProject';
+import NoPostsYet from './components/LeftProfileContent/Components/NoPostsYet';
+import PeopleYouMayKnow from '../connections/components/PeopleYouMayKnow';
 function Profile() {
     // let leftContent, rightContent;
     // useEffect(()=>{
@@ -102,7 +105,32 @@ function Profile() {
     
     // const leftContent = document.querySelector(".profile--content-left");
     // const rightContent = document.querySelector(".profile--content-right");
-
+    useEffect(()=>{
+        console.log("page loaded");
+        if(window.innerWidth>900){
+            setShowLeft(true);
+            setShowRight(true);
+            setShowAbout(false);
+        }
+        if(window.innerWidth<=900){
+            setShowLeft(false);
+            setShowRight(true);
+            setShowAbout(true);
+        }
+    },[])
+        // document.addEventListener("load",()=>{
+        //     console.log("page loaded");
+        //     if(window.innerWidth>900){
+        //         setShowLeft(true);
+        //         setShowRight(true);
+        //         setShowAbout(false);
+        //     }
+        //     if(window.innerWidth<=900){
+        //         setShowLeft(false);
+        //         setShowRight(true);
+        //         setShowAbout(true);
+        //     }
+        // });
     window.addEventListener("resize",()=>{
             if(window.innerWidth>900){
                 setShowLeft(true);
@@ -136,6 +164,7 @@ function Profile() {
     const [showCreateTeam, setShowCreateTeam] = useState(false);
     
     const [showEditBio, setShowEditBio] = useState(false);
+    const [showEditProject, setShowEditProject] = useState(false);
     const openModal = ()=>{
         setShowOverlay(true);
         window.scrollTo(0,0);
@@ -150,6 +179,7 @@ function Profile() {
         setShowTeamMembers(false);
         setShowEditBio(false);
         setShowCreateTeam(false);
+        setShowEditProject(false)
         document.body.style.overflowY="scroll";
     }
     const blockAccount = ()=>{
@@ -176,6 +206,10 @@ function Profile() {
     const viewEditBio = ()=>{
         openModal();
         setShowEditBio(true);
+    }
+    const viewEditProject = ()=>{
+        openModal();
+        setShowEditProject(true);
     }
     return (
         <div>
@@ -208,7 +242,10 @@ function Profile() {
                         showEditBio &&
                         <EditBio closeModal= {closeModal}/>
                     }
-
+                    {
+                        showEditProject &&
+                        <EditProject closeModal = {closeModal}/>
+                    }
                 </div>
                 
                 
@@ -216,7 +253,7 @@ function Profile() {
 
             <div className="profile--content">
                 <div className="profile--content-top-container">
-                    <TopProfileContent setShowLeft={setShowLeft} setShowRight={setShowRight} showAbout={showAbout}
+                    <TopProfileContent showLeft={showLeft} setShowLeft={setShowLeft} setShowRight={setShowRight} showAbout={showAbout}
                     showReportUser={reportAccount}
                     showBlockUser={blockAccount}
                     showRestrictUser={restrictAccount}/>
@@ -225,16 +262,26 @@ function Profile() {
                     {
                         showLeft &&
                         <div className="profile--content-left">
-                            <LeftProfileContent createTeam={viewCreateTeam} viewEditBio={viewEditBio}/>
+                            <LeftProfileContent createTeam={viewCreateTeam} viewEditBio={viewEditBio} />
                         </div>
                     }
                     {
-                        showRight && 
+                        showRight && posts.length!==0 &&
+                        
                         <div className="profile--content-right">
                             {posts.map((post, idx) => {
-                                return <Post key={idx} post={post} openTeamMember={viewTeamMembers}/>
+                                return <Post key={idx} post={post} openTeamMember={viewTeamMembers} viewEditProject={viewEditProject}/>
                             })}
                         </div>
+                        
+                    }
+                    {
+                        posts.length===0 &&
+                        <div className="profile--content-right">
+                            <NoPostsYet/>
+                            <PeopleYouMayKnow/>
+                        </div>
+
                     }
                     
                 </div>

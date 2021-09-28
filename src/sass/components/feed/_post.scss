@@ -7,7 +7,9 @@
     box-shadow: 0 10px 15px -3px rgba($color-black, 0.07),
         0 4px 6px -2px rgba($color-black, 0.05);
     position: relative;
-
+    @include respond(sm){
+        padding: 20px;
+    }
     &__author {
         display: flex;
 
@@ -44,6 +46,9 @@
         &__title {
             color: $color-black;
             font-size: 1.5rem;
+            @include respond(xs){
+                font-size: 1.2rem;
+            }
         }
 
         &__desc {
@@ -70,6 +75,10 @@
             &:last-child {
                 color: #4f4f4f;
             }
+            @include respond(xs){
+                font-size: smaller;
+                padding: 0px 5px;
+            }
         }
     }
     &__images{
@@ -88,6 +97,9 @@
         border-radius: 0 0 8px 8px;
         align-items: center;
         justify-content: space-between;
+        @include respond(sm){
+            justify-content: space-around;
+        }
 
         &__likes {
             margin-left: 2rem;
@@ -107,6 +119,9 @@
             & img {
                 height: 20px;
                 margin-right: 0.5rem;
+                @include respond(sm){
+                    margin-right: 0.2rem;
+                }
             }
         }
 
@@ -154,6 +169,10 @@
                 padding: 20px;
                 z-index: 800;
                 border-radius: 10px;
+                @include respond(md){
+                    transform: translate(-70%,-100%);
+                    box-shadow: 1px 5px 26px -7px rgba(0,0,0,0.75);
+                }
                 &-heading{
                     font-size: larger;
                     font-weight: 600;
@@ -163,7 +182,6 @@
                     justify-content: space-around;
                     font-weight: 600;
                     & span{
-                        // height: 40px;
                         cursor: pointer;
                         margin: 0px 10px;
                     }
@@ -235,6 +253,9 @@
                     box-shadow: -2px 2px 18px -6px rgba(0,0,0,0.75);
                     position: absolute;
                     background-color: white;
+                    @include respond(lg){
+                        transform: translate(-40%,-100%);
+                    }
                     span{
                         padding: 5px 10px;
                         cursor: pointer;
@@ -242,6 +263,7 @@
                     span:hover{
                         background-color: rgb(209, 208, 208);
                     }
+                    
                 }
             }
 
@@ -264,8 +286,8 @@
     cursor: pointer;
 }
 .extra-images-btn{
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     top: 85%;
     left: 90%;
     transform: translate(-50%, -50%);
@@ -279,7 +301,14 @@
     opacity: 0.8;
     font-size: 2rem;
     @include respond(md){
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
     }
+    @include respond(sm){
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
 }

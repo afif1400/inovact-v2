@@ -5,6 +5,12 @@
   width: 40%;
     padding: 40px;
     text-align: left;
+    @include respond(md){
+      width: 60%;
+    }
+    @include respond(sm){
+      width: 80%;
+    }
     &-head{
       display: flex;
       flex-direction: column;
