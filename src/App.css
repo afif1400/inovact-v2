@@ -4101,6 +4101,8 @@ input, textarea:focus {
         .notification-mid-teams-team-left-name {
           margin-left: 10px;
           font-size: 1.1rem; }
+      .notification-mid-teams-team input {
+        margin-right: 30px; }
   .notification-end {
     padding-left: 10px;
     margin-top: 15px;
@@ -4135,6 +4137,58 @@ input, textarea:focus {
     margin-bottom: 15px; }
   .faq img {
     margin-bottom: 30px; }
+
+.teamset {
+  padding: 2% 4% 2% 4%;
+  display: flex;
+  flex-direction: column; }
+  .teamset-select {
+    padding-left: 15px;
+    margin-top: 15px;
+    width: 70%;
+    display: flex;
+    flex-direction: column; }
+    @media only screen and (max-width: 62em) {
+      .teamset-select {
+        width: 95%; } }
+    .teamset-select-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px; }
+  .teamset-delete {
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding: 2% 5% 2% 5%;
+    display: flex;
+    height: 296px;
+    width: 95%;
+    flex-direction: column;
+    overflow: auto; }
+    .teamset-delete-team {
+      height: 80px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .teamset-delete-team-left {
+        width: 60%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; }
+        .teamset-delete-team-left img {
+          width: 44px;
+          height: 44px;
+          border-radius: 100%; }
+        .teamset-delete-team-left-name {
+          margin-left: 10px;
+          font-size: 1.1rem; }
+        .teamset-delete-team-left-deleteTeam {
+          color: red;
+          text-decoration: underline; }
+      .teamset-delete-team input {
+        margin-right: 30px; }
 
 .delete-member-buttons {
   margin-top: 2rem;

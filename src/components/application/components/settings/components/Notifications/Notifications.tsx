@@ -1,5 +1,6 @@
 import { Email, InputOutlined } from '@material-ui/icons'
 import React from 'react'
+import { NonceProvider } from 'react-select'
 import Toggle from '../Toggle/Toggle'
 import { TeamsData } from './tempData'
 
@@ -113,7 +114,12 @@ const Notifications: React.FC = () => {
                                     }
                                 />
                             </div>
-                            <hr />
+                            <hr
+                                style={{
+                                    border: 'none',
+                                    borderBottom: '1px solid black',
+                                }}
+                            />
                         </>
                     ))}
                 </div>

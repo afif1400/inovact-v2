@@ -1,0 +1,63 @@
+.teamset {
+    padding: 2% 4% 2% 4%;
+    display: flex;
+    flex-direction: column;
+    &-select {
+        padding-left: 15px;
+        margin-top: 15px;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        @include respond(md) {
+            width: 95%;
+        }
+        &-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+    }
+    &-delete {
+        border-radius: 10px;
+        border: 1px solid gray;
+        padding: 2% 5% 2% 5%;
+        display: flex;
+        height: 296px;
+        width: 95%;
+        flex-direction: column;
+        overflow: auto;
+
+        &-team {
+            height: 80px;
+
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &-left {
+                width: 60%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                img {
+                    width: 44px;
+                    height: 44px;
+                    border-radius: 100%;
+                }
+                &-name {
+                    margin-left: 10px;
+                    font-size: 1.1rem;
+                }
+                &-deleteTeam {
+                    color: red;
+                    text-decoration: underline;
+                }
+            }
+            input {
+                margin-right: 30px;
+            }
+        }
+    }
+}
