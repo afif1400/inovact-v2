@@ -1,16 +1,13 @@
-.suggestions{
-  
-   display: block;
-   background-color: $color-white;
+.suggestions {
+    display: block;
+    background-color: $color-white;
     margin: 0.3rem 0;
     &__title {
-       
-    font-weight: 500;
-    font-size: 1.2rem;
+        font-weight: 500;
+        font-size: 1.2rem;
         padding: 1.5rem;
-       
 
-        @include respond(sm){
+        @include respond(sm) {
             padding: 0rem;
             font-size: 1.2rem;
         }
@@ -18,17 +15,17 @@
     &__row {
         background-color: $color-white;
 
-        border:1px solid rgba(0,0,0,.125);
-       
+        border: 1px solid rgba(0, 0, 0, 0.125);
+
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        @include respond(sm){
+        @include respond(sm) {
             margin-top: 0.3rem;
             border-radius: 1rem;
-            border:1px solid $color-white;
+            border: 1px solid $color-white;
         }
-        &__rowInfo{
+        &__rowInfo {
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
@@ -47,33 +44,32 @@
             justify-content: left;
             align-items: center;
             margin-left: 0.2rem;
-
         }
-        &__buttons{
+        &__buttons {
             display: inline-flex;
             flex-direction: row;
             align-items: center;
             margin-right: 0.5rem;
         }
-        &__button{
-             &--green{
-                 color: white;
-                 padding: 0 0.5rem;
-                 border-radius: 2rem;
-                 min-width: 5rem;
-                 height: 2rem;
-                 border: 1px solid $color-primary-green;
-                 background-color: $color-primary-green;
-             } 
-             &--white {
-                 margin-left: 0.5rem;
-                 color: $color-black;
-                 background: none;
-                 height: 2rem;
-                 padding: 0 0.5rem;
-                 border-radius: 5rem;
-                 border: 1px solid black;
-             }
+        &__button {
+            &--green {
+                color: white;
+                padding: 0 0.5rem;
+                border-radius: 2rem;
+                min-width: 5rem;
+                height: 2rem;
+                border: 1px solid $color-primary-green;
+                background-color: $color-primary-green;
+            }
+            &--white {
+                margin-left: 0.5rem;
+                color: $color-black;
+                background: none;
+                height: 2rem;
+                padding: 0 0.5rem;
+                border-radius: 5rem;
+                border: 1px solid black;
+            }
         }
     }
 }

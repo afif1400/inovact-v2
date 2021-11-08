@@ -14,9 +14,10 @@ function TeamsPartOf(props: any) {
 
     const getTheUserTeam = async () => {
         const userId = localStorage.getItem('other-user')
+        console.log('userId', userId)
         await axios({
             method: 'get',
-            url: `https://cg2nx999xa.execute-api.ap-south-1.amazonaws.com/dev/user/team?user_id=36`,
+            url: `https://cg2nx999xa.execute-api.ap-south-1.amazonaws.com/dev/user/team?user_id=${userId}`,
             headers: {
                 Authorization: localStorage.getItem('user'),
             },

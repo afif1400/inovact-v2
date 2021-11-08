@@ -22,10 +22,11 @@ import ShareModal from 'components/application/components/teams/components/modal
 import UploadDocuments from 'components/application/components/teams/components/modals/UploadDocuments'
 
 import useRequests from 'useRequest/useRequest'
+import Spinner from 'components/application/Spinner'
 
 function Teams() {
     const allTeams = useSelector((state: any) => state.teams.teams)
-    const [isLoading, setLoading] = useState(true)
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -34,10 +35,12 @@ function Teams() {
 
     const [verticalActive, setVerticalActive] = useState(0)
     const [verticalActiveTeam, setVerticalActiveTeam] = useState<any>()
+    const [isLoad, setIsLoad] = useState<boolean>(true)
 
     useEffect(() => {
         setVerticalActive(allTeams[0]?.id)
         setVerticalActiveTeam(allTeams[0])
+        setIsLoad(false)
     }, [allTeams])
     //Modals
     const [showOverlay, setShowOverlay] = useState(false)
@@ -118,7 +121,7 @@ function Teams() {
         setVerticalActive(value)
         setVerticalActiveTeam(team)
     }
-    const handlePostProcessInoviteTeamMember = () => {}
+
     return (
         <div>
             {showOverlay && (
@@ -147,88 +150,98 @@ function Teams() {
             )}
 
             <div className="teams">
-                <div className="teams__content">
-                    <div className="teams__content__header">
-                        <img src={back} alt="" />
-                        <h6 className="text-style--bold text-align--left text-size--big">
-                            Teams
-                        </h6>
-                        <div>
-                            <img
-                                src={add}
-                                alt=""
-                                style={{ marginRight: '1rem' }}
-                            />
-                            <MenuIcon onClick={toggleShowOptions} />
-                        </div>
-                    </div>
-                    {showLeft && (
-                        <div className="teams__content__left">
-                            <div
-                                className="teams__content__user-teams"
-                                onClick={toggleShowOptions}
-                            >
-                                <UserTeam
-                                    allTeams={allTeams}
-                                    handleVerticalClick={handleVerticalClick}
-                                    idx={verticalActive}
+                {isLoad && <Spinner />}
+                {!isLoad && allTeams.length === 0 && (
+                    <div style={{ margin: 'auto' }}>There are no team</div>
+                )}
+                {!isLoad && allTeams.length !== 0 && (
+                    <div className="teams__content">
+                        <div className="teams__content__header">
+                            <img src={back} alt="" />
+                            <h6 className="text-style--bold text-align--left text-size--big">
+                                Teams
+                            </h6>
+                            <div>
+                                <img
+                                    src={add}
+                                    alt=""
+                                    style={{ marginRight: '1rem' }}
                                 />
-                            </div>
-                            <div className="teams__content__suggestions team-info__suggestion">
-                                <Invitation
-                                    allTeams={allTeams}
-                                    active_id={verticalActive}
-                                    active_team={verticalActiveTeam}
-                                />
+                                <MenuIcon onClick={toggleShowOptions} />
                             </div>
                         </div>
-                    )}
+                        {showLeft && (
+                            <div className="teams__content__left">
+                                <div
+                                    className="teams__content__user-teams"
+                                    onClick={toggleShowOptions}
+                                >
+                                    <UserTeam
+                                        allTeams={allTeams}
+                                        handleVerticalClick={
+                                            handleVerticalClick
+                                        }
+                                        idx={verticalActive}
+                                    />
+                                </div>
+                                <div className="teams__content__suggestions team-info__suggestion">
+                                    <Invitation
+                                        allTeams={allTeams}
+                                        active_id={verticalActive}
+                                        active_team={verticalActiveTeam}
+                                    />
+                                </div>
+                            </div>
+                        )}
 
-                    {showRight && (
-                        <MDBTabsContent className="teams__content__right">
-                            {allTeams &&
-                                allTeams.map((team: any, key: any) => {
-                                    return (
-                                        <MDBTabsPane
-                                            key={key}
-                                            show={verticalActive === team.id}
-                                        >
-                                            {allTeams.length == 0 ? (
-                                                <div className="">
-                                                    No Teams Yet
-                                                </div>
-                                            ) : (
-                                                <div className="teams__content__info">
-                                                    <div className="teams__content__team-description">
-                                                        <TeamDescription
-                                                            team={team}
-                                                        />
+                        {showRight && (
+                            <MDBTabsContent className="teams__content__right">
+                                {allTeams &&
+                                    allTeams.map((team: any, key: any) => {
+                                        return (
+                                            <MDBTabsPane
+                                                key={key}
+                                                show={
+                                                    verticalActive === team.id
+                                                }
+                                            >
+                                                {allTeams.length == 0 ? (
+                                                    <div className="">
+                                                        No Teams Yet
                                                     </div>
-                                                    <div className="teams__content__team-info">
-                                                        <TeamInfo
-                                                            team={team}
-                                                            viewInviteMember={
-                                                                viewInviteMember
-                                                            }
-                                                            viewUploadDocument={
-                                                                viewUploadDocument
-                                                            }
-                                                            viewDeleteMember={
-                                                                viewDeleteMember
-                                                            }
-                                                            viewMakeAdmin={
-                                                                viewMakeAdmin
-                                                            }
-                                                        />
+                                                ) : (
+                                                    <div className="teams__content__info">
+                                                        <div className="teams__content__team-description">
+                                                            <TeamDescription
+                                                                team={team}
+                                                            />
+                                                        </div>
+                                                        <div className="teams__content__team-info">
+                                                            <TeamInfo
+                                                                team={team}
+                                                                viewInviteMember={
+                                                                    viewInviteMember
+                                                                }
+                                                                viewUploadDocument={
+                                                                    viewUploadDocument
+                                                                }
+                                                                viewDeleteMember={
+                                                                    viewDeleteMember
+                                                                }
+                                                                viewMakeAdmin={
+                                                                    viewMakeAdmin
+                                                                }
+                                                            />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            )}
-                                        </MDBTabsPane>
-                                    )
-                                })}
-                        </MDBTabsContent>
-                    )}
-                </div>
+                                                )}
+                                            </MDBTabsPane>
+                                        )
+                                    })}
+                            </MDBTabsContent>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     )

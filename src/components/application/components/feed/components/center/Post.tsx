@@ -24,39 +24,10 @@ function Post({ post, openTeamMember, openRequestJoin }: any) {
         setShowComments(false)
     }
     const [isRequestedUser, setIsRequestedUser] = useState<number>()
-    const teamsData = [
-        {
-            img: 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg',
-            name: 'Team Name',
-            membersCount: 122,
-        },
-        {
-            img: 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg',
-            name: 'Team Name',
-            membersCount: 122,
-        },
-        {
-            img: 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg',
-            name: 'Team Name',
-            membersCount: 122,
-        },
-    ]
-    const userTeams = useSelector((state: any)=>state.teams.teams);
-    const peopleYouMayKnow = useSelector((state: any)=>state.peopleYouMayKnow);
-    const usersData = [
-        {
-            img: 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg',
-            name: 'Jane Doe',
-        },
-        {
-            img: 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg',
-            name: 'Jane Doe',
-        },
-        {
-            img: 'https://media.tarkett-image.com/large/TH_24567080_24594080_24596080_24601080_24563080_24565080_24588080_001.jpg',
-            name: 'Jane Doe',
-        },
-    ]
+
+    const userTeams = useSelector((state: any) => state.teams.teams)
+    const peopleYouMayKnow = useSelector((state: any) => state.peopleYouMayKnow)
+
     const toggleShowTeams = () => {
         setShowTeams(true)
     }
@@ -109,7 +80,7 @@ function Post({ post, openTeamMember, openRequestJoin }: any) {
     useEffect(() => {
         // console.log(post.likes);
         // console.log(post.likes.some((like: any)=>like.id!==user_id));
-        console.log(post.likes);
+        console.log(post.likes)
         if (post.likes.some((like: any) => like.user.id === user_id)) {
             setLikedPost(true)
         }
@@ -336,7 +307,9 @@ function Post({ post, openTeamMember, openRequestJoin }: any) {
                                             <TeamTag
                                                 img={team.avatar}
                                                 teamName={team.name}
-                                                membersCount={team.team_members.length}
+                                                membersCount={
+                                                    team.team_members.length
+                                                }
                                             />
                                         )
                                     })}

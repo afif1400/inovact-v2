@@ -52,3 +52,55 @@
         align-items: center;
     }
 }
+
+.team_invitation {
+    display: flex;
+    background-color: $color-white;
+    margin: 0.3rem 0;
+    flex-direction: column;
+    margin-top: 30px;
+    border-radius: 10px;
+    height: 400px;
+    &__body {
+        overflow-y: scroll;
+    }
+    &__title {
+        font-weight: 500;
+        font-size: 1.2rem;
+        padding: 1.5rem;
+
+        @include respond(sm) {
+            padding: 0rem;
+            font-size: 1.2rem;
+        }
+    }
+
+    &__row {
+        background-color: $color-white;
+        padding-right: 7px;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        @include respond(sm) {
+            margin-top: 0.4rem;
+            border-radius: 1rem;
+            border: 1px solid $color-white;
+        }
+        &__rowInfo {
+            display: flex;
+            flex-direction: row;
+            padding: 0.5rem;
+            align-items: center;
+            & img {
+                width: 3rem;
+                height: 3rem;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+        &__text {
+            margin-left: 0.2rem;
+        }
+    }
+}

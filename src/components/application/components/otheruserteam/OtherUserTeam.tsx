@@ -167,6 +167,7 @@ function Teams() {
                                     return (
                                         <MDBTabsPane
                                             show={verticalActive === team.id}
+                                            key={key}
                                         >
                                             <div className="teams__content__info">
                                                 <div className="teams__content__team-description">

@@ -3,6 +3,7 @@ import SettingsLeft from './components/SettingsLeft.tsx/SettingsLeft'
 import MenuIcon from '@material-ui/icons/Menu'
 import back from 'images/teams/back.svg'
 import PrivacySettings from './components/PrivacySettings/PrivacySettings'
+import PrivacyPolicy from './components/privacyPolicy/privacyPolicy'
 import Notifications from './components/Notifications/Notifications'
 import Faq from './components/Faq/Faq'
 import YourProfile from './components/YourProfile/YourProfile'
@@ -247,6 +248,7 @@ const Settings: React.FC = () => {
                                         saveDataToServer={saveDataToServer}
                                     />
                                 )}
+                                {selectedOption === 4 && <PrivacyPolicy />}
                                 {selectedOption === 5 && <Faq />}
                             </div>
                         )}

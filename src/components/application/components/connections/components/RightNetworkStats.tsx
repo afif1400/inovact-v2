@@ -13,6 +13,7 @@ function RightNetworkStats() {
     const my_connnections_complete = useSelector(
         (state: any) => state.connections.my_connnections_complete
     )
+
     useEffect(() => {
         setTotalConnections(my_connections.length)
         const mentorsCount = my_connections.filter(
@@ -26,7 +27,7 @@ function RightNetworkStats() {
         const TODAYS_DATE: Date = new Date()
         const lastWeekConnections = my_connnections_complete.filter(
             (connection: any) => {
-                if (connection.status == 'connections') {
+                if (connection.status == 'connected') {
                     const created_at: string = connection.created_at
                     const cretedDate = new Date(created_at)
                     const dateDifferenceInMs = Math.abs(
@@ -38,11 +39,9 @@ function RightNetworkStats() {
                 }
             }
         ).length
-        console.log(lastWeekConnections)
         setLastWeeksConnections(lastWeekConnections)
     }, [my_connnections_complete])
 
-    console.log('totalConnections', totalConnections)
     return (
         <div className="right-network-stats">
             <div

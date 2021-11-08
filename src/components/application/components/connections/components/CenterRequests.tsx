@@ -43,7 +43,6 @@ function CenterRequests() {
                 filteredConnectionId,
             } = await getConnectionsAllData(user_id)
 
-            console.log(filteredConnectedAccountComplete)
             setPendingRequestLoad(false)
             setMyConnectionLoad(false)
             dispatch(updatePendingRequests(filteredPendingRequest))
@@ -77,12 +76,10 @@ function CenterRequests() {
             'post',
             `connections/accept?user_id=${id}`
         )
-        console.log(response)
     }
 
     const rejectConnectRequest = async (id: number) => {
         //call api to connect
-        console.log(id)
         const filteredPendingRequest = pendingRequests.filter(
             (user: any) => user.id !== id
         )
@@ -92,7 +89,6 @@ function CenterRequests() {
             'post',
             `connections/reject?user_id=${id}`
         )
-        console.log(response)
     }
 
     const handleRemoveConnection = async (id: number) => {

@@ -17,93 +17,28 @@ import hr from 'images/user-info/aoi/HR.svg'
 import marketing from 'images/user-info/aoi/marketing.svg'
 import stock from 'images/user-info/aoi/stock.svg'
 import { useSelector } from 'react-redux'
+import { handleUserInfoChange } from 'StateUpdateHelper'
 
-const areas = [
-    {
-        name: 'Data Science',
-        image: datascience,
-    },
-    {
-        name: 'Project Management',
-        image: project,
-    },
-    {
-        name: 'Web dev',
-        image: webdev,
-    },
-    {
-        name: 'Cloud Computing',
-        image: cloud,
-    },
-    {
-        name: 'ML and AI',
-        image: ml,
-    },
-    {
-        name: 'Robotics',
-        image: robotics,
-    },
-    {
-        name: 'Competetive coding',
-        image: coding,
-    },
-    {
-        name: 'Business Analytic',
-        image: business,
-    },
-    {
-        name: 'Gaming',
-        image: gaming,
-    },
-    {
-        name: 'Electrical',
-        image: electrical,
-    },
-    {
-        name: 'UI/UX',
-        image: uiux,
-    },
-    {
-        name: 'FinTech',
-        image: fintech,
-    },
-    {
-        name: 'Economics',
-        image: economics,
-    },
-
-    {
-        name: 'Mechanical',
-        image: mechanical,
-    },
-    {
-        name: 'Human Resources',
-        image: hr,
-    },
-    {
-        name: 'Marketing',
-        image: marketing,
-    },
-    {
-        name: 'Stock Trading',
-        image: stock,
-    },
-]
 function AreaOfInterest(props: any) {
-    const allInterests = useSelector((state: any)=>state.allInterests);
+    const allInterests = useSelector((state: any) => state.allInterests)
+    const userInterests = useSelector(
+        (state: any) => state.userInfo.user_interests
+    )
     const {
         formField: { aoi },
     } = props
-    const [userAOI, setUserAOI] = useState<string[]>([])
-    const userInfo = useSelector((state: any) => state.userInfo)
-    const addAOI = (name: any) => {
-        const aoi = userInfo.area_of_interests.slice(0)
-        // aoi.includes(name) ? aoi.filter((ele)=>ele!==name) : aoi.push(name);
-        aoi.includes(name) ? aoi.splice(aoi.indexOf(name), 1) : aoi.push(name)
-        setUserAOI([...aoi])
-        props.handleChange('area-of-interest', aoi)
+
+    const addAOI = (interest: any) => {
+        const isPresent = userInterests.some(
+            (int: any) => int.id === interest.id
+        )
+        const updatedInterests = isPresent
+            ? userInterests
+            : [...userInterests, interest]
+        handleUserInfoChange('user_interests', updatedInterests)
     }
-    console.log(allInterests);
+
+    console.log('allInterests', allInterests)
     return (
         <section className="area-of-interest">
             <div className="area-of-interest__text">
@@ -126,10 +61,7 @@ function AreaOfInterest(props: any) {
                                             id={`aoi-${index}`}
                                             name={aoi.name}
                                             value={item.name}
-                                            onClick={addAOI.bind(
-                                                null,
-                                                item.id
-                                            )}
+                                            onClick={() => addAOI(item)}
                                             hidden
                                         />
                                         <label

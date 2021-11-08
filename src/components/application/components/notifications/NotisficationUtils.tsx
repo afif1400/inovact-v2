@@ -13,6 +13,7 @@ const mapApiNotisficationDataToUiData = (
                 id: notisficationFromApi.user1,
                 img: notisficationFromApi.user.avatar,
                 type: 'connectionsByUser2',
+                time_string: notisficationFromApi.created_at,
                 comment: (
                     <p className="notifications-tag-comment">
                         <b
@@ -36,6 +37,7 @@ const mapApiNotisficationDataToUiData = (
                 img: notisficationFromApi.idea_likes[0].user.avatar,
                 type: 'ideas',
                 isCurrUserNotisfication: false,
+                time_string: notisficationFromApi.idea_likes[0].liked_at,
                 comment: (
                     <p className="notifications-tag-comment">
                         <b>
@@ -65,6 +67,7 @@ const mapApiNotisficationDataToUiData = (
                 id: notisficationFromApi.id,
                 img: notisficationFromApi.thought_likes[0].user.avatar,
                 type: 'thoughts',
+                time_string: notisficationFromApi.thought_likes[0].liked_at,
                 comment: (
                     <p className="notifications-tag-comment">
                         <b>
@@ -85,13 +88,16 @@ const mapApiNotisficationDataToUiData = (
                         </Link>
                     </p>
                 ),
-                time: 'yes to be added',
+                time: findTimeDiffString(
+                    notisficationFromApi.thought_likes[0].liked_at
+                ),
             }
         case 'projects': {
             return {
                 id: notisficationFromApi.id,
                 img: notisficationFromApi.project_likes[0].user.avatar,
                 type: 'projects',
+                time_string: notisficationFromApi.project_likes[0].liked_at,
                 comment: (
                     <p className="notifications-tag-comment">
                         <b>
@@ -122,6 +128,8 @@ const mapApiNotisficationDataToUiData = (
                 id: notisficationFromApi.team.id,
                 img: notisficationFromApi.team.team_members[0].user.avatar,
                 type: 'team_invitations',
+                invitation_id: notisficationFromApi.id,
+                time_string: notisficationFromApi.invited_at,
                 comment: (
                     <p className="notifications-tag-comment">
                         <b>

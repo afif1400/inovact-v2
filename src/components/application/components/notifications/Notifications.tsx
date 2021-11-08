@@ -74,8 +74,8 @@ function Notifications() {
         ;(async () => {
             try {
                 const res = await makeApiCall('get', 'notifications')
-                var responseWihtoutRemovingCurrentUser = res.data.data.user[0]
 
+                var responseWihtoutRemovingCurrentUser = res.data.data.user[0]
                 responseWihtoutRemovingCurrentUser['projects'] =
                     getRemovedCurrentUserNotifications(
                         responseWihtoutRemovingCurrentUser['projects'],
@@ -86,8 +86,11 @@ function Notifications() {
                         responseWihtoutRemovingCurrentUser['ideas'],
                         'ideas'
                     )
+                console.log(
+                    'responseWihtoutRemovingCurrentUser',
+                    responseWihtoutRemovingCurrentUser
+                )
                 setAllNotisfication(responseWihtoutRemovingCurrentUser)
-                console.log(responseWihtoutRemovingCurrentUser)
                 let filteredAllNotisfications =
                     getNotificationTypePropertyAdded(
                         responseWihtoutRemovingCurrentUser
@@ -117,7 +120,14 @@ function Notifications() {
                             goToTeam
                         )
                     )
-                setallnotification(uiMappedNotification)
+                const sortedNotification = uiMappedNotification.sort(
+                    (notif1: any, notif2: any) => {
+                        const post1Date: any = new Date(notif1.time_string)
+                        const post2Date: any = new Date(notif2.time_string)
+                        return post2Date.getTime() - post1Date.getTime()
+                    }
+                )
+                setallnotification(sortedNotification)
                 setIsLoad(false)
             } catch (err) {
                 console.log(err)
@@ -143,6 +153,7 @@ function Notifications() {
             {isLoad && <Spinner />}
 
             {!isLoad &&
+                allnotification.length &&
                 allnotification.map((notification: any) => {
                     return (
                         <NotificationTag
@@ -152,6 +163,7 @@ function Notifications() {
                         />
                     )
                 })}
+            {!isLoad && allnotification.length === 0 && 'No Notifications'}
         </div>
     )
 }
