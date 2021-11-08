@@ -1,4 +1,9 @@
 .comments-on-posts{
+    &-comments-container{
+        height: 300px;
+        overflow-y: scroll;
+        margin: 20px 0px;
+    }
     &-back{
         font-size: smaller;
         font-weight: 600;
@@ -12,6 +17,7 @@
     &-contents{
         padding: 10px;
         display: flex;
+
     }
     &-img-container{
         margin: 0px 20px 0px 0px;

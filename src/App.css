@@ -5068,6 +5068,11 @@ input, textarea:focus {
     font-size: small;
     color: #02bd63; }
 
+.comments-on-posts-comments-container {
+  height: 300px;
+  overflow-y: scroll;
+  margin: 20px 0px; }
+
 .comments-on-posts-back {
   font-size: smaller;
   font-weight: 600;
