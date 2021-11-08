@@ -90,12 +90,15 @@ function CommentsOnPost(props: any) {
             <div className="comments-on-posts-back" onClick={props.backToPost}><span>{"<< Back to post"}</span></div>
             <div >
                 <p className="comments-on-posts-heading">Comments</p>
-                {
-                    allPostComments &&
-                    allPostComments.map((comment: any)=>{
-                        return <CommentMainContent comment={comment}/>
-                    })
-                }
+                <div className="comments-on-posts-comments-container">
+                    {
+                        allPostComments?.length!==0 ?
+                        allPostComments?.map((comment: any)=>{
+                            return <CommentMainContent comment={comment}/>
+                        }):
+                        <p>This post has no comments yet.</p>
+                    }
+                </div>
                 <div className="comments-on-posts-addcomment">
                     <textarea placeholder="Add a comment..." ref={commentInput}/>
                     <button onClick={addCommentToPost}>Post</button>

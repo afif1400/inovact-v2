@@ -337,6 +337,10 @@ function OtherProfile() {
             setIsLoading(false)
         })()
         // setIsLoading(false);
+        //The following callback function clears the other user data if the user leaves the page.
+        return ()=>{
+            handleOtherUserInfoChange("clear-other-user", null);
+        }
     }, [])
     return (
         <div>

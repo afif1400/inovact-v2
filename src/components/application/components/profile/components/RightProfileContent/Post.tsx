@@ -120,7 +120,7 @@ function Post({ post, openTeamMember, viewEditProject, editProject }: any) {
         if (post.likes?.some((like: any) => like.user?.id === user_id)) {
             setLikedPost(true)
         }
-    },[])
+    },[post.likes])
     return (
         <div className="post">
             <div>
@@ -222,7 +222,7 @@ function Post({ post, openTeamMember, viewEditProject, editProject }: any) {
                             }
                         }}
                     />
-                        <p className="post__footer__likes__num">{post.numLikes}</p>
+                        <p className="post__footer__likes__num">{likes}</p>
                     </div>
                     <div className="post__footer__comments">
                         <img src={comment} alt="" onClick={toggleShowComments}/>

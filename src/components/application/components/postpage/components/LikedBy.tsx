@@ -27,9 +27,11 @@ function LikedBy(props: any) {
             }
             <div>
                 {
+                    props.postData?.likes?.length!==0 ? 
                     props.postData?.likes?.map((ele: any)=>{
                         return <LikedUser user = {ele}/>
-                    })
+                    }):
+                    <p>This post has no likes yet.</p>
                 }
             </div>
         </div>
